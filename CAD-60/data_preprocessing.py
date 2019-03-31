@@ -99,23 +99,6 @@ def parse_skeleton_text(line):
         skeleton_coords.append([x, y, z])
 
     # assert len(skeleton_coords) == 15, 'Actual length is: ' + str(len(output))
-    skeleton_coords = [
-        skeleton_coords[1],
-        skeleton_coords[0],
-        skeleton_coords[3],
-        skeleton_coords[4],
-        skeleton_coords[11],
-        skeleton_coords[5],
-        skeleton_coords[6],
-        skeleton_coords[12],
-        skeleton_coords[8],
-        skeleton_coords[13],
-        skeleton_coords[10],
-        skeleton_coords[14],
-        skeleton_coords[7],
-        skeleton_coords[9],
-        skeleton_coords[2],
-    ]
 
     skeleton_coords = np.array(skeleton_coords)
     return frame_num, skeleton_coords  # ",".join((str(v) for v in output))
