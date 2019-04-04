@@ -22,7 +22,7 @@ def parse_each_file(lines):
 
 
 if __name__ == "__main__":
-    dataset = []
+    sample, label = [], []
 
     for a in range(1, ACTION_NUM + 1):
         for s in range(1, SUBJECT_NUM + 1):
@@ -33,9 +33,14 @@ if __name__ == "__main__":
                     f = open(filename, 'r')
                     lines = f.readlines()
                     assert len(lines) % JOINT_NUM == 0, 'file format error'
-                    dataset.append((a, parse_each_file(lines)))
+                    sample.append(parse_each_file(lines))
+                    label.append(a)
                 except FileNotFoundError as e:
                     continue
+    dataset = {
+        'label': label,
+        'sample': sample
+    }
 
     pickle.dump(dataset, open(os.path.join(
         INPUT_DATA_PATH, 'input.pkl'), 'wb'))
